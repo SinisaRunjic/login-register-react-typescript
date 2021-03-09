@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Form from './Components/Form/index';
+import Form from './components/Form';
 
 const App = (): JSX.Element => {
   return (

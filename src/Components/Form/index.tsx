@@ -1,5 +1,4 @@
 import React from 'react';
-import useStyles from './styles';
 import Card from '@material-ui/core/Card';
 import Container from '@material-ui/core/Container';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,16 +10,20 @@ import { ILoginRegister } from '../../interfaces';
 import { yupResolver } from '@hookform/resolvers';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { useTranslation  } from 'react-i18next';
+import useStyles from './styles';
+import SwitchLanguage from 'components/SwitchLanguage';
+
 
 const registrationSchema = yup.object().shape({
     name: yup.string().trim().required('Required.'),
     email: yup.string().trim().email('Enter valid email').required('Required.')
-})
-
+});
 
 const Form: React.FC = () => {
     const { state, dispatch } = React.useContext(Store);
     const classes = useStyles();
+    const { t } = useTranslation('translation');
     const { register, handleSubmit, errors } = useForm<ILoginRegister>({
         resolver: yupResolver(registrationSchema)
     });
@@ -53,17 +56,18 @@ const Form: React.FC = () => {
                 type: 'LOGIN_USER_FAILED',
             }))
     }
-
+    
     return (
         <React.Fragment>
             <Container maxWidth="sm">
                 <Card className={classes.card} >
                     <CardContent>
+                    <SwitchLanguage />
                         <form noValidate className={classes.formContainer}>
                             <TextField
                                 inputRef={register}
                                 name="name"
-                                label="name"
+                                label={t('name')}
                                 variant="outlined"
                                 error={!!errors.name}
                                 helperText={errors.name ? errors.name.message : ''}
@@ -72,7 +76,7 @@ const Form: React.FC = () => {
                             <TextField
                                 inputRef={register}
                                 name="email"
-                                label="email"
+                                label={t('email')}
                                 variant="outlined"
                                 error={!!errors.email}
                                 helperText={errors.email ? errors.email.message : ''}
@@ -81,7 +85,8 @@ const Form: React.FC = () => {
                         </form>
                     </CardContent>
                     <CardActions className={classes.buttons}>
-                        <Button size="small" onClick={handleSubmit(toggleLogin)} > Login</Button><Button size="small" onClick={handleSubmit(toggleRegistration)}>Register</Button>
+                        <Button size="small" onClick={handleSubmit(toggleLogin)}> {t('login')}</Button>
+                        <Button size="small" onClick={handleSubmit(toggleRegistration)}>{t('register')}</Button>
                     </CardActions>
                 </Card>
             </Container>
