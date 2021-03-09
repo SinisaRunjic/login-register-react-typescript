@@ -20,7 +20,7 @@ const RouterWrapper: React.FC = () => (
 
 const Routes: React.FC<RouteComponentProps> = () => {
   const { state } = React.useContext(Store);
-  if (state.isLogged) {
+  if (true) {
     return (
     <Layout>
       <Switch>
