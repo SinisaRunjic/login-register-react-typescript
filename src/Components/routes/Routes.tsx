@@ -24,8 +24,8 @@ const Routes: React.FC<RouteComponentProps> = () => {
     return (
     <Layout>
       <Switch>
-        <Route path="/dashboard" component={Dashboard} />
-        <Redirect from='/*' to='/dashboard' />
+        <Route path="/dashboard" component={Dashboard} exact/>
+        <Redirect from='*' to='/dashboard' />
       </Switch>
     </Layout>
     )
@@ -33,7 +33,7 @@ const Routes: React.FC<RouteComponentProps> = () => {
     return (
       <Switch>
         <Route path="/" component={SignInRegister} exact />
-        <Redirect from='/*' to='/' />
+        <Redirect from='*' to='/' />
       </Switch>
     )
   }
