@@ -1,6 +1,7 @@
 export interface ILoginRegister {
     name: string,
-    email: string
+    email: string,
+    isLogged: boolean
 }
 
 export interface IRegistrationList {
