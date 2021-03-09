@@ -6,7 +6,8 @@ import { IState, IAction } from './interfaces';
 const initialState: IState = {
     name: '',
     email: '',
-    list: []
+    list: [],
+    isLogged: false
 }
 
 export const Store = React.createContext<IState | any>(initialState)
@@ -22,8 +23,10 @@ const reducer = (state: IState, action: IAction): IState => {
         case 'LOGIN_USER':
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
+                isLogged: true
             }
+
         default:
             return state
     }

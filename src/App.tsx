@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Form from './components/Form';
+import Routes from 'components/routes';
 
 const App = (): JSX.Element => {
   return (
     <div className="App">
-      <Form />
+      <Routes />
     </div>
   );
 }
