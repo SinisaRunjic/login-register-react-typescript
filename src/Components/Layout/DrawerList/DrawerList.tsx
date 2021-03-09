@@ -2,41 +2,50 @@ import React from 'react';
 
 import {
   Divider,
-  List, 
+  Icon,
+  List as MUIList, 
   ListItem,
   ListItemIcon,
    ListItemText
 } from '@material-ui/core';
-
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import {NavLink} from 'react-router-dom';
 import useStyles from './DrawerList.style'
 import { IDrawerList } from './interface';
+import listItems from './ListItems';
+import { useTranslation } from 'react-i18next';
+import SwitchLanguage from 'components/SwitchLanguage';
 
 
 const DrawerList:React.FC<IDrawerList> = ({closeDrawerList}) => {
   const classes = useStyles();
+  const { t } = useTranslation('translation');
+
+  const LISTITEMS = listItems(t);
+
+
   return (
     <div>
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar}>
+        <SwitchLanguage/>
+      </div>
       <Divider />
-      <List>
-        {['Dashboard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text} onClick={closeDrawerList}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+      <MUIList>
+        {LISTITEMS.map((listItem) => (
+          <ListItem
+            button
+            component={NavLink}
+            to={listItem.linkTo}
+            activeClassName="Mui-selected"
+            key={listItem.text}
+            onClick={closeDrawerList}
+          >
+            <ListItemIcon>
+              <Icon>{listItem.icon}</Icon>
+            </ListItemIcon>
+            <ListItemText primary={listItem.text} />
           </ListItem>
         ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      </MUIList>
     </div>
   )
 }

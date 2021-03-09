@@ -1,6 +1,6 @@
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    centerToolbarText:{
+      display:'flex',
+      justifyContent: 'center'
+    }
   }),
 );
 

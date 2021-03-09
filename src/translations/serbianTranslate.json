@@ -1,8 +1,12 @@
 {
-  "name":"ime",
-  "email":"email",
-  "login":"uloguj se",
-  "register":"registruj se",
-  "english":"engleski",
-"serbian":"srpski"
+  "name": "ime",
+  "email": "email",
+  "login": "uloguj se",
+  "register": "registruj se",
+  "english": "engleski",
+  "serbian": "srpski",
+  "home": "Početna stranica",
+  "about_me": "O meni",
+  "events": "Događaji",
+  "projects": "Projekti"
 }

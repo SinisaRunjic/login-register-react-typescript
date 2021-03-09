@@ -1,8 +1,12 @@
 {
-  "name":"name",
-  "email":"email",
-  "login":"login",
-  "register":"register",
-  "english":"english",
-"serbian":"serbian"
+  "name": "name",
+  "email": "email",
+  "login": "login",
+  "register": "register",
+  "english": "english",
+  "serbian": "serbian",
+  "home": "Home",
+  "about_me": "About me",
+  "events": "Events",
+  "projects": "Projects"
 }

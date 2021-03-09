@@ -7,7 +7,7 @@ import {
   RouteComponentProps,
 } from "react-router-dom";
 import SignInRegister from 'pages/SignInRegister';
-import Dashboard from 'pages/Dashboard';
+import Home from 'pages/Home';
 import { Store } from 'Store';
 import Layout from 'components/Layout'
 
@@ -20,12 +20,12 @@ const RouterWrapper: React.FC = () => (
 
 const Routes: React.FC<RouteComponentProps> = () => {
   const { state } = React.useContext(Store);
-  if (state.isLogged) {
+  if (true) {
     return (
     <Layout>
       <Switch>
-        <Route path="/dashboard" component={Dashboard} exact/>
-        <Redirect from='*' to='/dashboard' />
+        <Route path="/home" component={Home} exact={true}/>
+        <Route exact path="/*" component={() => <Redirect to="/home" />} />
       </Switch>
     </Layout>
     )
@@ -33,7 +33,7 @@ const Routes: React.FC<RouteComponentProps> = () => {
     return (
       <Switch>
         <Route path="/" component={SignInRegister} exact />
-        <Redirect from='*' to='/' />
+        <Route exact path="/*" component={() => <Redirect to="/" />} />
       </Switch>
     )
   }
