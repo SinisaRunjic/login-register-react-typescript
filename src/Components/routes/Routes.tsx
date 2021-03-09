@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -9,6 +9,7 @@ import {
 import SignInRegister from 'pages/SignInRegister';
 import Dashboard from 'pages/Dashboard';
 import { Store } from 'Store';
+import Layout from 'components/Layout'
 
 
 const RouterWrapper: React.FC = () => (
@@ -19,16 +20,14 @@ const RouterWrapper: React.FC = () => (
 
 const Routes: React.FC<RouteComponentProps> = () => {
   const { state } = React.useContext(Store);
-  console.log(state)
-  const [loggedIn] = useState<boolean>(false);
   if (state.isLogged) {
     return (
-      <React.Fragment>
-        <Switch>
-          <Route path="/dashboard" component={Dashboard} />
-          <Redirect from='/*' to='/dashboard' />
-        </Switch>
-      </React.Fragment>
+    <Layout>
+      <Switch>
+        <Route path="/dashboard" component={Dashboard} />
+        <Redirect from='/*' to='/dashboard' />
+      </Switch>
+    </Layout>
     )
   } else {
     return (
