@@ -1,10 +1,13 @@
 import React from 'react'
+import PageLayout from 'components/shared/PageLayout'
 
 const Dashboard = () => {
   return (
-    <div>
-      DASHBOAR PAGE
-    </div>
+    <PageLayout headerText={'home'}>
+      <div>
+        Childrens
+      </div>
+    </PageLayout>
   )
 }
 
