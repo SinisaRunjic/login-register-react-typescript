@@ -15,7 +15,7 @@ const PageLayout: React.FC<IPageLayout> = ({ headerText, children }) => {
           {headerText}
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         {children}
       </Grid>
     </Grid>
